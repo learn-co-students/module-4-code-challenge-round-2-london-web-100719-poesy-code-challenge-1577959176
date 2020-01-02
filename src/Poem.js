@@ -1,14 +1,19 @@
-import React from 'react';
+import React from "react";
 
 class Poem extends React.Component {
-  render(){
+  render() {
     return (
-      <div style={{color: "black"}}>
-        <h3>Title</h3>
-        <p>Content</p>
-        <strong>- By Author</strong>
+      <div>
+        <h3>{this.props.title}</h3>
+        <p>{this.props.content}</p>
+        <p>
+          <strong>- By {this.props.author}</strong>
+        </p>
+        <button onClick={this.props.readButtonClickHandler}>
+          {this.props.read ? "Mark as unread" : "Mark as read"}
+        </button>
       </div>
-    ); 
+    );
   }
 }
 

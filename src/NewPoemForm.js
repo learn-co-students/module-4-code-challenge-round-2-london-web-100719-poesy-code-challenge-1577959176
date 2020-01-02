@@ -1,16 +1,46 @@
-import React from 'react';
+import React from "react";
 
 class NewPoemForm extends React.Component {
-  render(){
+  state = {
+    title: "",
+    author: "",
+    content: ""
+  };
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    e.target.reset();
+    this.props.addPoem({ ...this.state });
+    this.setState({
+      title: "",
+      author: "",
+      content: ""
+    });
+  };
+
+  render() {
     return (
-      <div className="new-poem">
-        <form className="new-poem-form">
-          <input placeholder="Name your masterpiece..." />
-          <textarea placeholder="Your masterpiece belongs here..." />
-          <input type="submit" value="Share your masterpiece"/>
-        </form>
-      </div>
-    ); 
+      <form
+        className="new-poem-form"
+        onSubmit={this.handleSubmit}
+        onChange={this.handleChange}
+      >
+        <input placeholder="Title" name="title" />
+        <input placeholder="Author" name="author" />
+        <textarea
+          placeholder="Write your masterpiece here..."
+          rows={10}
+          name="content"
+        />
+        <input type="submit" value="Share your masterpiece" />
+      </form>
+    );
   }
 }
 
