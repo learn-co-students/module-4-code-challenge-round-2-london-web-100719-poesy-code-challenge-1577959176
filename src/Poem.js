@@ -4,14 +4,12 @@ class Poem extends React.Component {
   render() {
     return (
       <div>
-        <h3>{this.props.title}</h3>
-        <p>{this.props.content}</p>
+        <h3>Title</h3>
+        <p>Content</p>
         <p>
-          <strong>- By {this.props.author}</strong>
+          <strong>- By Author</strong>
         </p>
-        <button onClick={this.props.readButtonClickHandler}>
-          {this.props.read ? "Mark as unread" : "Mark as read"}
-        </button>
+        <button>Mark as read</button>
       </div>
     );
   }
